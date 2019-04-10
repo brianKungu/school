@@ -1,0 +1,76 @@
+{% extends 'website/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="container">
+
+    <div class="row">
+
+        {% if abouts %}
+        {% for about in abouts %}
+                <img src="{{about.logo.url}}"  alt="" style="height:150px; width:100%;">
+            </div>
+            <div class="row">
+                 <h4 class="text-center">About Us</h4>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <b>Motto</b>
+                    <p>{{about.motto}}</p>
+                    <a href="{% url 'website:about' about.id%}"><i class="fas fa-edit"></i> </a>
+                </div>
+
+
+                <div class="col-sm-5">
+                     <b>Mission</b>
+                    <p>{{about.mission}}</p>
+                    <a href="{% url 'website:about' about.id%}"><i class="fas fa-edit"></i> </a>
+                </div>
+
+                <div class="col-sm-3">
+                     <b>Vision</b>
+                    <p>{{about.vision}}</p>
+                    <a href="{% url 'website:about' about.id%}"><i class="fas fa-edit"></i> </a>
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+<hr>
+    <div class="row">
+        {% if staffs %}
+        {% for staff in staffs %}
+
+
+        <div class="container">
+            <div class="row">
+                <div class="row">
+
+                    <h4 class="text-center">Staff details</h4><br>
+
+                    <h4><a href="{% url 'website:create_staff' %}"><i class="fas fa-plus-square"></i>Add staff</a></h4>
+
+            </div>
+
+                <div class="col-sm-3">
+
+                    <b>Staff name</b>
+                    <p>{{staff.staff_name}}</p>
+
+
+                    <b>id number</b>
+                    <p>{{staff.id_number}}</p>
+
+                    <b>contact</b>
+                    <p>{{staff.contact}}</p>
+
+                    <b>Role</b>
+                    <p>{{staff.role}}</p>
+                    <a href="" class="btn btn-success"><i class="fas fa-edit"></i></a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
