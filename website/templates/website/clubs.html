@@ -1,0 +1,47 @@
+{% extends 'website/base.html' %}
+{% block title%}Clubs{%endblock%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    {% if clubs %}
+    <div class="row">
+        {%for club in clubs%}
+        <div class="col-sm-3">
+            <h5 class="text-right"><a href="{% url 'website:create_club' %}">Add club</a></h5>
+            <div class="card" style="width:18rem">
+                <div class="card-body">
+                    <h4 class="card-title">{{club.club_name}}club</h4>
+                    <div class="caption">
+                        Description:
+                        <h4>{{club.description}}</h4>
+                       Patron
+                        <h4>{{club.patron}}</h4>
+                        <a href="{% url 'website:update-club' club.id %}"><i class="fas fa-edit"></i></a>
+                        <a href="{% url 'website:delete-club' club.id %}"><i class="fas fa-trash"></i></a>
+                    </div>
+
+            </div>
+            </div>
+        </div>
+        {%endfor%}
+    {% endif %}
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

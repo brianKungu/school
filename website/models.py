@@ -13,15 +13,21 @@ class Club(models.Model):
     club_name=models.CharField(max_length=100)
     description=models.CharField(max_length=500)
     patron=models.CharField(max_length=100)
+    def get_absolute_url(self):
+        return reverse('website:clubs')
 
 class Department(models.Model):
     department_name=models.CharField(max_length=100)
     department_head=models.CharField(max_length=100)
     sub_head=models.CharField(max_length=100)
+    def get_absolute_url(self):
+        return reverse('website:departments')
 
 class Staff(models.Model):
     staff_name=models.CharField(max_length=100)
     id_number=models.CharField(max_length=50)
     contact=models.CharField(max_length=50)
     role=models.CharField(max_length=100)
+    def get_absolute_url(self):
+        return reverse('website:index')
 

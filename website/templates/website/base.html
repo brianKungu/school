@@ -2,12 +2,11 @@
 <head>
     <title>{% block title %}School{% endblock %}</title>
 
+
 {% load static %}
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="{% static 'music/css/style.css' %}"/>
 </head>
 
 <body>
@@ -38,8 +37,8 @@
         <button type="submit" class="btn btn-success object-center">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href=""><i class="fas fa-plus-square"></i> </a></li>
-        <li><a href=""><i class="fas fa-sign-out-alt"></i></a>
+        <li><a href="{% url 'website:departments' %}">Departments </a></li>
+        <li><a href="{% url 'website:clubs' %}">Clubs</a></li>
 
       </ul>
     </div><!-- /.navbar-collapse -->

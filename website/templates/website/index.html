@@ -7,8 +7,8 @@
 
         {% if abouts %}
         {% for about in abouts %}
-                <img src="{{about.logo.url}}"  alt="" style="height:150px; width:100%;">
-            </div>
+        <img src="{{about.logo.url}}"  alt="" style="height:150px; width:100%;">
+    </div>
             <div class="row">
                  <h4 class="text-center">About Us</h4>
             </div>
@@ -34,43 +34,49 @@
             </div>
         {% endfor %}
         {% endif %}
-    </div>
-<hr>
-    <div class="row">
-        {% if staffs %}
-        {% for staff in staffs %}
+
+        <hr>
+        <div class="row">
+            {% if staffs %}
 
 
-        <div class="container">
-            <div class="row">
+
+            <div class="container">
                 <div class="row">
 
-                    <h4 class="text-center">Staff details</h4><br>
+                        <div class="row">
 
-                    <h4><a href="{% url 'website:create_staff' %}"><i class="fas fa-plus-square"></i>Add staff</a></h4>
+                            <h4 class="text-center">Staff details</h4><br>
 
-            </div>
+                            <h4><a href="{% url 'website:create_staff' %}"><i class="fas fa-plus-square"></i>Add staff</a></h4>
 
-                <div class="col-sm-3">
+                        </div>
+                            {% for staff in staffs %}
+                    <div class="col-sm-3">
 
-                    <b>Staff name</b>
-                    <p>{{staff.staff_name}}</p>
+                        <b>Staff name</b>
+                        <p>{{staff.staff_name}}</p>
 
 
-                    <b>id number</b>
-                    <p>{{staff.id_number}}</p>
+                        <b>id number</b>
+                        <p>{{staff.id_number}}</p>
 
-                    <b>contact</b>
-                    <p>{{staff.contact}}</p>
+                        <b>contact</b>
+                        <p>{{staff.contact}}</p>
 
-                    <b>Role</b>
-                    <p>{{staff.role}}</p>
-                    <a href="" class="btn btn-success"><i class="fas fa-edit"></i></a>
-
+                        <b>Role</b>
+                        <p>{{staff.role}}</p>
+                        <a href="{% url 'website:update-staff' staff.id%}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                        <a href="{%url 'website:delete-staff' staff.id %}" class="btn btn-danger"><i class="fas fa-trash"></i> </a>
+                    </div>
+                       {% endfor %}
                 </div>
             </div>
         </div>
-        {% endfor %}
+
         {% endif %}
     </div>
-</div>
+
+
+
+{% endblock %}
