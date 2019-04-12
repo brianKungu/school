@@ -11,7 +11,7 @@ class AboutForm(forms.ModelForm):
 class StaffForm(forms.ModelForm):
     class Meta:
         model=Staff
-        fields=['staff_name','id_number','contact','role']
+        fields=['staff_cover','staff_name','id_number','contact','role']
 
 class DepartmentForm(forms.ModelForm):
     class Meta:

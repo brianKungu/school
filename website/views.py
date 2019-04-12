@@ -11,13 +11,14 @@ def index(request):
                     'staffs':staffs}
                   )
 def create_staff(request):
-    form=StaffForm(request.POST or None)
+    form = StaffForm(request.POST or None, request.FILES or None)
     if form.is_valid():
 
-        staff=form.save(commit=False)
-
+        staff = form.save(commit=False)
+        staff.staff_cover = request.FILES['staff_cover']
         staff.save()
-        return render(request,'website/index.html',{'staff':staff})
+
+        return render(request,'website/index.html', {'staff':staff})
     return render(request, 'website/create_staff.html', {'form': form})
 
 class AboutUpdateView(UpdateView):
@@ -30,9 +31,10 @@ def staff_delete(delete,staff_id):
     staff= get_object_or_404(Staff, pk=staff_id)
     staff.delete()
     return redirect('/')
+
 class StaffUpdateView(UpdateView):
     model = Staff
-    fields = ['staff_name', 'id_number', 'contact', 'role']
+    fields = ['staff_cover','staff_name', 'id_number', 'contact', 'role']
     template_name = "website/create_staff.html"
 
 def department(request):

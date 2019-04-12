@@ -24,6 +24,7 @@ class Department(models.Model):
         return reverse('website:departments')
 
 class Staff(models.Model):
+    staff_cover = models.FileField()
     staff_name=models.CharField(max_length=100)
     id_number=models.CharField(max_length=50)
     contact=models.CharField(max_length=50)

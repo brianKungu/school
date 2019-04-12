@@ -2,27 +2,30 @@
 {% block title%}Departments{%endblock%}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container">
+<div class="container-fluid" style="background-color:silver;padding-top:5%;">&nbsp;
+    <h5 class="text-center"><a href="{% url 'website:departments' %}"class="btn-lg  btn-warning">Departments</a></h5><br>
     {% if departments %}
-    <div class="row">
-        {%for department in departments%}
-        <div class="col-sm-3">
-            <h5 class="text-right"><a href="{% url 'website:create_department' %}">Add department</a></h5>
-            <div class="card text-white bg-dark mb-3" style="width:18rem">
-                <div class="card-body">
-                    <h4 class="card-header">{{department.department_name}}department</h4>
-                    <div class="caption">
-                        Department Head:
-                        <h4>{{department.department_head}}</h4>
-                        Department Assistant:
-                        <h4>{{department.sub_head}}</h4>
-                        <a href="{% url 'website:update-department' department.id %}"><i class="fas fa-edit"></i></a>
-                        <a href="{% url 'website:delete-department' department.id %}"><i class="fas fa-trash"></i></a>
-                    </div>
 
-            </div>
-            </div>
-        </div>
+                <div class="row">
+
+                    {%for department in departments%}
+                    <div class="col-sm-3">
+
+                        <div class="card text-white bg-info mb-3" style="height:350px; width:100%;">
+                            <div class="card-body">
+                                <h4 class="card card-header">{{department.department_name}}</h4>
+                                <div class="caption">
+                                    Department Head:
+                                    <h4>{{department.department_head}}</h4>
+                                    Department Assistant:
+                                    <h4>{{department.sub_head}}</h4>
+                                    <a href="{% url 'website:update-department' department.id %}" class="btn-sm btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'website:delete-department' department.id %}" class="btn-sm btn btn-danger"><i class="fas fa-trash"></i></a>
+                                </div>
+
+                        </div>
+                        </div>
+                    </div>
         {%endfor%}
     {% endif %}
 

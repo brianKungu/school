@@ -2,25 +2,29 @@
 {% block title%}Clubs{%endblock%}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container">
+<div class="container-fluid" style="background-color: silver;padding-top:5%;">
+    <h5 class="text-center"><a href="{% url 'website:clubs' %}" class="btn btn-lg btn-warning">Clubs</a></i></h5><br>
     {% if clubs %}
     <div class="row">
         {%for club in clubs%}
         <div class="col-sm-3">
-            <h5 class="text-right"><a href="{% url 'website:create_club' %}">Add club</a></h5>
-            <div class="card" style="width:18rem">
-                <div class="card-body">
-                    <h4 class="card-title">{{club.club_name}}club</h4>
-                    <div class="caption">
-                        Description:
-                        <h4>{{club.description}}</h4>
-                       Patron
-                        <h4>{{club.patron}}</h4>
-                        <a href="{% url 'website:update-club' club.id %}"><i class="fas fa-edit"></i></a>
-                        <a href="{% url 'website:delete-club' club.id %}"><i class="fas fa-trash"></i></a>
-                    </div>
+            <div class="panel panel-success">
+                <div class="panel-body">
+                    <div class="card text-white bg-info mb-3" style="width:250px;height:350px">
+                        <div class="card-body">
+                            <h4 class="card card-header">{{club.club_name}}&nbsp;club</h4>
+                            <div class="caption">
+                                Description:
+                                <h4>{{club.description}}</h4>
+                               Patron
+                                <h4>{{club.patron}}</h4>
+                                <a href="{% url 'website:update-club' club.id %}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                <a href="{% url 'website:delete-club' club.id %}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                            </div>
 
-            </div>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
         {%endfor%}
